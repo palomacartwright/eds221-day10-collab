@@ -13,8 +13,16 @@ library(janitor)
 ```
 
 ```{r}
-crab_size <- read_csv(here::here("data", "CrabBodySize.csv"))
+crab_size <- read_csv(here::here("data", "CrabBodySize.csv")) %>% 
+  clean_names()
 ```
+
+```{r}
+
+
+
+```
+
 
 
 Hey Felicia! So excited to work with you 
