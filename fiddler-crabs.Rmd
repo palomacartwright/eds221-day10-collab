@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(here)
 library(janitor)
+library(kableExtra)
 ```
 
 ```{r, include=FALSE}
@@ -28,6 +29,25 @@ ggplot(crab_size, aes(y = carapace_width, x = latitude)) +
 
 ```
 
+```{r, include=FALSE}
+summ_table <- crab_size %>% 
+  group_by(site) %>% 
+  summarize(mean = round(mean(carapace_width, na.rm = TRUE), 2), 
+            std = round(sd(carapace_width, na.rm = TRUE), 2), 
+            count = n())
+```
+
+```{r, echo = FALSE}
+summ_table %>% 
+  kable(col.names = c("Site", "Mean (mm)", "
+                      Standard Deviation (mm)", "Total Sample Size"), 
+        caption = "Summary Table of Calculations by Site", 
+        ) %>% 
+  kable_styling(full_width = FALSE, position = "left") %>% 
+  kable_classic() %>% 
+  column_spec(1, bold = TRUE, background = "lightgray") %>% 
+  row_spec(0, bold = TRUE, background = "lightblue")
+```
 
 
-Hey Felicia! So excited to work with you 
+
