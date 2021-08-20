@@ -49,5 +49,21 @@ summ_table %>%
   row_spec(0, bold = TRUE, background = "lightblue")
 ```
 
+```{r, include = FALSE}
+test <- crab_size %>%
+  group_by(site) %>% 
+  summarize(mean_size = round(mean(carapace_width), 2),
+            mean_water = round(mean(matw), 2))
+```
 
+```{r, fig.alt = "Scatterplot showing the mean size of Fiddler Crabs vs mean water temperature. On average, cooler water produces larger crabs.", fig.cap = "Graph of mean carapace width (mm) vs mean water temperature (degrees Celsius)", echo=FALSE}
+ggplot(test, aes(x = mean_water, y = mean_size)) +
+  geom_point(aes(color = site)) +
+  labs(title = "Average Carapace Width vs. Average Water Temperature",
+       x = "Average Water Temperature (degrees Celsius)",
+       y = "Average Size (mm)",
+       color = "Site")
+
+
+```
 
