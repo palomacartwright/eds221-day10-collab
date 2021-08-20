@@ -1,5 +1,5 @@
 ---
-title: "Test"
+title: "Fiddler Crabs"
 author: "Paloma Cartwright"
 date: "20/08/2021"
 output: html_document
@@ -7,6 +7,14 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+library(janitor)
 ```
+
+```{r}
+crab_size <- read_csv(here::here("data", "CrabBodySize.csv"))
+```
+
 
 Hey Felicia! So excited to work with you 
