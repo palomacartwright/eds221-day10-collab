@@ -12,13 +12,18 @@ library(here)
 library(janitor)
 ```
 
-```{r}
+```{r, include=FALSE}
 crab_size <- read_csv(here::here("data", "CrabBodySize.csv")) %>% 
   clean_names()
 ```
 
-```{r}
-
+```{r, fig.alt = "Jitterplot showing the size of Fiddler Crabs by latitude. The Bare Cove Park has the largest crab size observed.", fig.cap = "Graph of carapace width (mm) vs latitude", echo=FALSE}
+ggplot(crab_size, aes(y = carapace_width, x = latitude)) +
+  geom_jitter(aes(color = site)) +
+  labs(title = "Size of Fiddler Crabs by Location",
+       x = "Latitude",
+       y ="Carapace Width (mm)",
+       color = "Site")
 
 
 ```
